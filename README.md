@@ -9,3 +9,7 @@
 sudo apt-get install texlive-latex-base
 
 #The detailed result is stored in the file called ans.
+
+#holes: i, j, k, l, m, n, o, t
+
+#particles: a, b, c, d, e, f, g, h
