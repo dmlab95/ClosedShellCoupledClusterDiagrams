@@ -56,8 +56,9 @@ def driver(list_op, cctyp):
     if len(list_op) == 1:
 	return
 
-    rhs_oplst = sum(int(T[1]) for T in list_op[1:]) - (len(list_op) > 2)
-    val = max(0, min(rhs_oplst, len(cctyp) - 2) - 2)                   #val => max nbody HT complex can form from this oplst
+    
+    #val => max nbody HT complex can form from this oplst
+    val = [1, 2][list_op[0] == 'V'] + sum(int(T[1]) - 1 for T in list_op[1:])
     print 'val ', val
     for nbody in range(val + 1):
         driver_initial(list_op, cctyp, nbody)
