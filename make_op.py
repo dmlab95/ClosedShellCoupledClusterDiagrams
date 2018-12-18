@@ -57,12 +57,14 @@ def driver(list_op, cctyp):
 	return
 
     
-    #val => max nbody HT complex can form from this oplst
-    val = [1, 2][list_op[0] == 'V'] + sum(int(T[1]) - 1 for T in list_op[1:])
+    #n = val + 2 => max nbody HT complex can form from this oplst
+    val = max(0, min([1, 2][list_op[0] == 'V'] + sum(int(T[1]) - 1 for T in list_op[1:]),  len(cctyp) - 2) - 2)
     print 'val ', val
     for nbody in range(val + 1):
         driver_initial(list_op, cctyp, nbody)
 
 
 if __name__ == '__main__':
+    print driver(['V','T2'], cctyp)  #these two are good checks for CCSDT 3b terms 
     print driver(['V','T1','T2'], cctyp)
+
