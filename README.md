@@ -6,7 +6,7 @@
 
 #Please install pdflatex by this command on Ubuntu terminal prior to running the script:
 
-sudo apt-get install texlive-latex-base
+      sudo apt-get install texlive-latex-base
 
 #The detailed result is stored in the file called ans.
 
