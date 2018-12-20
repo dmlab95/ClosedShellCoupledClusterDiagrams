@@ -85,9 +85,9 @@ scol = [['a', 'i'], ['b', 'l'], ['e', 'm']]
 #print get_vertices(operators, scol, 2)
 
 #-------------------------Create connectivity between lhs & rhs operators
-'''                     list of contr.(#h, #p, #loops) b\w each vertices of H(=Fcol) & all Ts'(=Rhs_oplst1)
+'''                     list of contr.(#h, #p, #loops, rank_of_operator) b\w each vertices of H(=Fcol) & all Ts'(=Rhs_oplst1)
 input:    Fcol, Rhs_oplst1 = [['k', 'c'], ['l', 'd']], [['d', 'l'], ['b', 'j']], [['c', 'k'], ['a', 'i']]
-output:   lst = sorted(sorted ((0, 0, 0), (1, 1, 1)), sorted((1, 1, 1), (0, 0, 0)) )
+output:   lst = sorted(sorted ((0, 0, 0, 2), (1, 1, 1, 2)), sorted((1, 1, 1, 2), (0, 0, 0, 2)) )
 '''
 def connectivity(fcol, rhs_op_lst1):
     
@@ -99,7 +99,7 @@ def connectivity(fcol, rhs_op_lst1):
 	    contracted_holes = len(set(vertex) & rhs & set('ijklmnot'))
 	    contracted_particles = len(set(vertex) & rhs & set('abcdefgh'))           
 	    loops = any(set(vertex) == set(op[i]) for i in range(len(op))) #for all n in Tn 
-	    temp.append(tuple([contracted_holes, contracted_particles, int(loops)]))
+	    temp.append(tuple([contracted_holes, contracted_particles, int(loops), len(op)]))
 	lst.append(tuple(sorted(temp)))
     return tuple(sorted(lst))
 
